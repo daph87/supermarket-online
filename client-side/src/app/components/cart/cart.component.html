@@ -1,0 +1,26 @@
+<!-- Logout Button + Welcome Message -->
+<div *ngIf="user">
+
+    <p id="welcomeMessage">Hello {{user.firstName}} </p>
+    <button type="button" class="btn btn-dark" (click)="logOut()">Log Out</button>
+
+</div>
+
+<!-- Loading Gif -->
+<div *ngIf="!items">
+    <img src="assets/images/loading.gif">
+</div>
+
+<!-- Items chosen by Customer -->
+<div class="section" *ngIf="items">
+    <app-cart-card [appearance]="true" *ngFor="let i of items" [item]="i"></app-cart-card>
+</div>
+
+<!-- Bottom of the Cart -->
+<ng-container *ngIf="items">
+    <div *ngIf="items.length >= 1" id="bottomCart">
+        <p id="finalPrice"> Final Price : ₪{{this.redux.getState().finalPrice | number:'1.0-9'}} </p>
+        <button type="button" class="btn btn-danger" (click)="deleteItems()">Delete all items</button>
+        <button type="button" class="btn btn-primary" (click)="order()">Order</button>
+    </div>
+</ng-container>

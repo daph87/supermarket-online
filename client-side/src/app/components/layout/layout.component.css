@@ -1,0 +1,20 @@
+/* Website main Grid */
+section {
+  background-color: lightgrey;
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+header {
+  grid-column: span 12;
+  background-color: white;
+}
+
+main {
+  grid-column: span 12;
+  overflow: auto;
+}

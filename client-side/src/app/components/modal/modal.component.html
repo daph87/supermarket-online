@@ -1,0 +1,16 @@
+<!-- Modal -->
+<div [class]="this.redux.getState().modal" id="demoModal">
+    <div>
+        <div class="alert alert-success">
+            <div>
+                <h2> {{headingMessage}} </h2>
+
+            </div>
+            <div>
+                <p>{{modalMessage}}</p>
+            </div>
+            <button (click)="closeModal()" class="btn btn-primary">Ok</button>
+
+        </div>
+    </div>
+</div>

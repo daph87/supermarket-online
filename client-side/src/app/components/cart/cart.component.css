@@ -1,0 +1,54 @@
+/* Desktop */
+@media only screen and (min-width: 961px) {
+  #bottomCart > #finalPrice {
+    font-size: x-large;
+    margin: 2%;
+  }
+  .section {
+    height: 66vh;
+    overflow: auto;
+  }
+  div:nth-of-type(3) {
+    text-align: left;
+  }
+
+  #welcomeMessage {
+    font-size: x-large;
+  }
+
+  div:nth-of-type(3) button:nth-of-type(1) {
+    margin: 5px;
+  }
+  div:nth-of-type(3) button:nth-of-type(2) {
+    float: right;
+    margin: 5px;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  #welcomeMessage {
+    font-size: large;
+  }
+
+  #bottomCart > #finalPrice {
+    font-size: 22px;
+  }
+  .btn-danger {
+    margin: 1%;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  #welcomeMessage {
+    font-size: large;
+  }
+  .btn-danger {
+    margin: 2%;
+  }
+
+  #bottomCart > #finalPrice {
+    font-size: 25px;
+  }
+}

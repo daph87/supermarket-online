@@ -1,0 +1,46 @@
+<div *ngIf="connectedCustomer || connectedAdmin">
+
+        <aside>
+                <!-- Customer Cart -->
+                <ng-container *ngIf="connectedCustomer && cart && !connectedAdmin">
+                        <app-cart [user]="connectedCustomer" [cart]="cart"></app-cart>
+                </ng-container>
+
+                <!-- Admin Panel -->
+                <ng-container *ngIf="connectedAdmin">
+                        <p id="welcomeMessage">Welcome {{connectedAdmin.firstName}}</p>
+                        <button type="button" class="btn btn-dark" (click)="logOut()">Log Out</button>
+                        <br>
+                        <br>
+                        <app-admin-panel></app-admin-panel>
+                </ng-container>
+
+        </aside>
+
+        <main>
+                <!-- All Products Menu  -->
+                <button class="button" (click)="allVegetables()">Vegetables</button>
+                <button class="button" (click)="allMilkAndEggs()">Milk and Eggs</button>
+                <button class="button" (click)="allBathrooms()">Bathroom ustensils</button>
+                <button class="button" (click)="allAlcohol()">Alcohol</button>
+                <button class="button" (click)="allFruits()">Fruits</button>
+                <br>
+
+                <input default="" (keydown.enter)="searchField()" [(ngModel)]="productName" type="text">
+
+                <!-- Search input -->
+                <button class="btn btn-outline-danger btn-sm" (click)="searchField()">🔍Search</button>
+                <br><br>
+
+                <!-- Loading  -->
+                <div id="loading" *ngIf="!products">
+                        <img src="assets/images/loading.gif">
+                </div>
+
+                <!-- All Products -->
+                <ng-container *ngIf="products">
+                        <app-products-card *ngFor="let p of products" [product]="p" [cart]="cart"></app-products-card>
+                </ng-container>
+
+        </main>
+</div>

@@ -1,0 +1,193 @@
+/* Default for all sizes */
+#welcomeMessage {
+  font-size: x-large;
+  margin-top: 2%;
+}
+
+@font-face {
+  src: url("/assets/fonts/Rotterland.ttf");
+  font-family: myFirstFont;
+}
+#numberOfOrders,
+#availableProducts {
+  font-size: large;
+}
+
+#supermarketImage {
+  margin-top: 60px;
+  margin: 10px;
+  width: 190px;
+  height: 180px;
+}
+
+#notificationMessage {
+  color: darkred;
+  font-weight: 700;
+}
+
+#vegetablesImage {
+  width: 50vh;
+}
+
+.alert-danger {
+  font-size: smaller;
+}
+
+.login span {
+  color: red;
+  margin: 5px;
+}
+.form-group button:hover {
+  background-color: grey;
+}
+
+.login input {
+  font-size: large;
+
+  text-align: center;
+  margin: 15px;
+  padding: 10px;
+}
+
+#homepageImage {
+  grid-column: span 12;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+button {
+  margin: 15px;
+}
+
+.form-group {
+  margin: auto;
+  padding: 10px;
+  widows: 200px;
+  height: 340px;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+#loginDiv {
+  text-align: center;
+  background-color: white;
+  overflow: auto;
+}
+
+#generalInformationDiv {
+  background-color: white;
+}
+
+#globalDiv {
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#aboutUsDiv {
+  background-color: white;
+}
+
+/* Desktop Style */
+@media only screen and (min-width: 961px) {
+  #contactUs {
+    display: none;
+  }
+
+  #aboutUsDiv > div > p {
+    font-size: large;
+  }
+
+  #homepageImage {
+    background-image: url("/assets/images/discount200.png");
+  }
+
+  #globalDiv {
+    border: 1px solid grey;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  #loginDiv {
+    border: 1px solid grey;
+    grid-column: span 4;
+  }
+  #generalInformationDiv {
+    border: 1px solid grey;
+    grid-column: span 4;
+    overflow: auto;
+  }
+  #aboutUsDiv {
+    border: 1px solid grey;
+    grid-column: span 4;
+    overflow: auto;
+  }
+
+  .form-group {
+    width: 300px;
+    margin-bottom: 2%;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  ‏ #globalDiv {
+    display: grid;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  #homepageImage {
+    height: 120px;
+    background-image: url("/assets/images/discounts.jpg");
+  }
+  #loginDiv {
+    border-bottom: 0.5px solid grey;
+    grid-column: span 12;
+  }
+  #generalInformationDiv {
+    grid-column: span 12;
+    overflow: auto;
+  }
+  #aboutUsDiv {
+    border-bottom: 0.5px solid grey;
+    grid-column: span 12;
+    padding: 2%;
+  }
+  .form-group {
+    width: 80%;
+    margin-bottom: 2%;
+  }
+}
+
+/* Tablets Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  #globalDiv {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  #homepageImage {
+    height: 250px;
+    background-image: url("/assets/images/discounts.jpg");
+  }
+
+  #loginDiv {
+    border-bottom: 0.5px solid grey;
+    grid-column: span 12;
+  }
+
+  #generalInformationDiv {
+    grid-column: span 12;
+  }
+  #aboutUsDiv {
+    border-bottom: 0.5px solid grey;
+    grid-column: span 12;
+  }
+  .form-group {
+    width: 60%;
+    margin-bottom: 2%;
+  }
+}

@@ -1,0 +1,38 @@
+/* Desktop */
+@media only screen and (min-width: 961px) {
+  div {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+  }
+  #orderDetailed {
+    width: 50%;
+    float: left;
+    height: 88vh;
+    box-sizing: border-box;
+    position: relative;
+  }
+  #customerDetails {
+    margin: auto;
+    position: relative;
+  }
+  h1 {
+    color: darkred;
+    margin-left: 20px;
+  }
+  div:nth-of-type(1) > #backToShop {
+    position: absolute;
+    left: 5px;
+    top: 15px;
+  }
+  form {
+    margin-top: 10%;
+    margin: auto;
+  }
+  .alert-danger {
+    width: 400px;
+  }
+  .form-group {
+    width: 400px;
+  }
+}

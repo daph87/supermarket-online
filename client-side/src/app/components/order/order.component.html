@@ -1,0 +1,95 @@
+<!-- Customer Cart detailed -->
+<div id="orderDetailed">
+        <br>
+        <button id="backToShop" type="button" class="btn btn-danger" (click)="backToShopping()">
+                &#10096; Back to shopping
+        </button>
+        <br>
+        <ng-container *ngIf="finalPrice">
+                <h1>Order of {{connectedCustomer.firstName}}</h1>
+                <h4>The final Price is : ₪{{finalPrice | number:'1.0-9'}} </h4>
+        </ng-container>
+        <ng-container *ngIf="items">
+                <app-cart-card [style.display]="'block'" [appearance]="false" *ngFor="let i of items" [item]="i">
+                </app-cart-card>
+        </ng-container>
+</div>
+
+<!-- Customer details form to complete order -->
+<div id="customerDetails">
+        <br>
+        <h2>Enter your details</h2>
+        <form #orderForm="ngForm">
+
+                <br><br>
+                <div class="form-group">
+
+                        <select required name="deliveryCity" #deliveryCity="ngModel" [(ngModel)]="deliveryCityInput"
+                                class="form-control">
+                                <option>{{deliveryCityInput}}</option>
+                                <option [value]="c.name" *ngFor="let c of cities">{{c.name}}</option>
+                        </select>
+
+
+                        <div class="alert alert-danger" *ngIf="deliveryCity.touched && !deliveryCity.valid">
+                                <div *ngIf="deliveryCity.errors.required">
+                                        Delivery City is required
+                                </div>
+
+                        </div>
+                        <br>
+
+                        <input required minlength="3" maxlength="20" class="form-control" #deliveryStreet="ngModel"
+                                name="deliveryStreet" id="deliveryStreetField" type="text"
+                                [(ngModel)]="deliveryStreetInput" placeholder="Delivery street">
+                        <div class="alert alert-danger" *ngIf="deliveryStreet.touched && !deliveryStreet.valid">
+                                <div *ngIf="deliveryStreet.errors.required">
+                                        Delivery Street is required
+                                </div>
+
+                                <div *ngIf="deliveryStreet.errors.minlength">
+                                        Delivery Street should be minimum
+                                        {{deliveryStreet.errors.minlength.requiredLength}} letters
+                                </div>
+
+                                <div *ngIf="deliveryStreet.errors.maxlength">
+                                        Delivery Street should be maximum
+                                        {{deliveryStreet.errors.minlength.requiredLength}} letters
+                                </div>
+                        </div>
+                        <br>
+                        <input required name="houseNumber" #houseNumber="ngModel" class="form-control" id="houseNumber"
+                                type="number" placeholder="House Number" min="1" [(ngModel)]="houseNumberInput">
+                        <div class="alert alert-danger" *ngIf="houseNumber.touched && !houseNumber.valid">
+                                <div *ngIf="houseNumber.errors.required">
+                                        House Number is required
+                                </div>
+                        </div>
+                        <br>
+                        <input required pattern="^\d{16}$" class="form-control" name="creditCardNumber"
+                                #creditCardNumber="ngModel" id="creditCardNumberField" type="number"
+                                [(ngModel)]="order.creditCardNumber" placeholder="Credit card Number" min="1">
+                        <div class="alert alert-danger" *ngIf="creditCardNumber.touched && !creditCardNumber.valid">
+                                <div *ngIf="creditCardNumber.errors.required">
+                                        Credit Card Number is required
+                                </div>
+
+                                <div *ngIf="creditCardNumber.errors.pattern">
+                                        Credit Card Number should have 16 numbers
+                                </div>
+                        </div>
+                        <br>
+                        <input required class="form-control" name="deliveryDate" id="deliveryDateField" type="date"
+                                [(ngModel)]="order.deliveryDate" placeholder="Delivery date" #deliveryDate="ngModel"
+                                [min]="date()">
+                        <div class="alert alert-danger" *ngIf="deliveryDate.touched && !deliveryDate.valid">
+                                <div *ngIf="deliveryDate.errors.required">
+                                        Delivery Date is required
+                                </div>
+                        </div>
+                        <br>
+                        <button [disabled]="orderForm.form.invalid" type="button" class="btn btn-primary"
+                                (click)="addOrder()">Add Order</button>
+                </div>
+        </form>
+</div>

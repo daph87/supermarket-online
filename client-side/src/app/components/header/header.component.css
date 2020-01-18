@@ -1,0 +1,68 @@
+/* Default css for all sizes */
+img {
+  height: 8vh;
+  position: absolute;
+  left: 5px;
+}
+
+#header {
+  position: relative;
+  background-color: white;
+}
+
+span {
+  color: darkred;
+}
+
+h1 {
+  font-family: myFirstFont;
+  font-size: 7vh;
+  transform: translateY(10%);
+  opacity: 0.6;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("/assets/fonts/Rotterland.ttf");
+}
+
+/* Desktop */
+@media only screen and (min-width: 961px) {
+  h1 {
+    float: left;
+    margin-left: 100px;
+  }
+
+  #contact {
+    float: right;
+    margin: 1%;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 400px) {
+  ‏ #header > #contact,
+  p {
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  span {
+    color: darkred;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  #header > #contact,
+  p {
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}

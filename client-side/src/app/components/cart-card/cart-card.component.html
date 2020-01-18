@@ -1,0 +1,17 @@
+<!-- Each item Of CustomerCart -->
+<div class="itemsCard" *ngIf="item">
+        <div class="products">
+                <p>{{item.productID.productName }}</p>
+
+                <p>Quantity: {{ item.amount }}</p>
+
+                <p>Total Price: ₪{{item.totalPrice | number:'1.0-9'}} </p>
+        </div>
+
+        <div class="imageDiv">
+                <ng-container *ngIf="appearance">
+                        <button class="deleteButton" (click)="deleteOneItem()">&#x274C;</button>
+                </ng-container>
+                <img class="image" src={{imgUrl}}>
+        </div>
+</div>

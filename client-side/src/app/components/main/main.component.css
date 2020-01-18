@@ -1,0 +1,106 @@
+.button:hover {
+  color: white;
+}
+.btn-outline-danger {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.button:focus {
+  color: darkred;
+}
+
+.button {
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  font-family: myFirstFont;
+  color: black;
+}
+
+@font-face {
+  src: url("/assets/fonts/Rotterland.ttf");
+  font-family: myFirstFont;
+}
+
+/* Desktop Style */
+@media only screen and (min-width: 961px) {
+  .button {
+    margin: 10px;
+    font-size: 50px;
+  }
+  div {
+    height: 100%;
+    background-color: lightgrey;
+    text-align: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  aside {
+    border: 1px solid black;
+    grid-column: span 3;
+  }
+
+  main {
+    border: 1px solid black;
+    grid-column: span 9;
+    overflow: auto;
+    height: 100%;
+  }
+
+  #loading {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  #welcomeMessage {
+    font-size: x-large;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 400px) {
+  ‏ div {
+    height: 100%;
+    background-color: lightgrey;
+    text-align: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  aside {
+    grid-column: span 12;
+  }
+
+  main {
+    grid-column: span 12;
+    overflow: auto;
+    height: 100%;
+  }
+
+  .button {
+    margin: 1%;
+    font-size: 28px;
+  }
+}
+
+/* Tablets Style */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  aside {
+    border-bottom: none;
+  }
+
+  .button {
+    margin: 1%;
+    font-size: 33px;
+  }
+}

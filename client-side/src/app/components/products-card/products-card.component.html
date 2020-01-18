@@ -1,0 +1,17 @@
+<!-- One product Card -->
+<div [class]="class" *ngIf="product" (click)="updateCard()">
+    <p>{{ product.productName }}</p>
+    <p>Price:₪{{ product.price }}</p>
+    <ng-container>
+        <div class="container"><img src="http://localhost:3000/assets/{{product.pictureName}}"></div>
+    </ng-container>
+
+    <!-- Buttons visible for customer only -->
+    <ng-container *ngIf="connectedCustomer && !connectedAdmin">
+        <button class="btn btn-outline-secondary btn-sm" (click)="decreaseQuantity()"><b>-</b></button>
+        <input type="number" min=1 max=1000 [(ngModel)]="quantity">
+        <button class="btn btn-outline-secondary btn-sm" (click)="increaseQuantity()"><b>+</b></button>
+        <br><br>
+        <button class="btn btn-dark" (click)="addToCart()">Add to cart</button>
+    </ng-container>
+</div>

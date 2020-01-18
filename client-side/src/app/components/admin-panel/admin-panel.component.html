@@ -1,0 +1,120 @@
+<!-- Modal -->
+<app-modal [modalMessage]="modalMessage" [headingMessage]="headingMessage"></app-modal>
+
+<!-- Add Product Button -->
+<button id="addButton" class="btn btn-outline-danger btn-lg" (click)="displayAddingForm()">+</button>
+
+<!-- Add Product Form -->
+<div *ngIf="this.redux.getState().display">
+
+    <form #form="ngForm">
+        <div class="form-group">
+
+            <input required minlength="3" maxlength="12" name="addProductName" #addProductName="ngModel"
+                class="form-control" type="text" placeholder="Product Name" [(ngModel)]="newProduct.productName">
+            <div class="alert alert-danger" *ngIf="addProductName.touched && !addProductName.valid">
+                <div *ngIf="addProductName.errors.required">
+                    Product Name is required
+                </div>
+
+                <div *ngIf="addProductName.errors.minlength">
+                    The name of the product should be minimum {{addProductName.errors.minlength.requiredLength}} letters
+                </div>
+                <div *ngIf="addProductName.errors.maxlength">
+                    The name of the product should be maximum {{addProductName.errors.maxlentgh.requiredLength}} letters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <input required name="addProductPrice" #addProductPrice="ngModel" [(ngModel)]="newProduct.price"
+                class="form-control" min="1" type="number" placeholder="Product Price">
+            <div class="alert alert-danger" *ngIf="addProductPrice.touched && !addProductPrice.valid">
+                <div *ngIf="addProductPrice.errors.required">
+                    Price is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <select required name="addCategory" #addCategory="ngModel" placeholder="category"
+                [(ngModel)]="newProduct.categoryID" class="form-control">
+                <option disabled>Select a category</option>
+
+                <option [ngValue]="c" *ngFor="let c of categories">{{c.categoryName}}</option>
+            </select>
+
+            <div class="alert alert-danger" *ngIf="addCategory.touched && !addCategory.valid">
+                <div *ngIf="addCategory.errors.required">
+                    Category is required
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <input required #addImage="ngModel" ngModel class="form-control" type="file" accept="image/*"
+                name="productImage" (change)="setImage($event)">
+            <div class="alert alert-danger" *ngIf="addImage.touched && !addImage.valid">
+                <div *ngIf="addImage.errors.required">
+                    Image is required </div>
+            </div>
+        </div>
+        <button [disabled]="form.form.invalid || !this.redux.getState().closedModal" class="btn btn-primary"
+            (click)="addProduct()">Add Product</button>
+    </form>
+</div>
+
+
+<!-- Update Product Form -->
+<div *ngIf="this.redux.getState().productToUpdate && this.redux.getState().display === false">
+    <form #updateForm="ngForm">
+        <div class="form-group">
+            <label>Product Name:</label>
+            <input required #updateName="ngModel" class="form-control" type="text"
+                [(ngModel)]="this.redux.getState().productToUpdate.productName"
+                [placeholder]="this.redux.getState().productToUpdate.productName" name="updateProductName">
+            <div class="alert alert-danger" *ngIf="updateName.touched && !updateName.valid">
+                <div *ngIf="updateName.errors.required">
+                    Product name is required </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Price:</label>
+            <input required #updatePrice="ngModel" name="updateProductPrice" class="form-control" type="number"
+                [(ngModel)]="this.redux.getState().productToUpdate.price"
+                [placeholder]="this.redux.getState().productToUpdate.price" min="1">
+            <div class="alert alert-danger" *ngIf="updatePrice.touched && !updatePrice.valid">
+                <div *ngIf="updatePrice.errors.required">
+                    Product price is required </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Change the category:</label>
+            <select required #updateCategory="ngModel" name="updateProductCategory" class="form-control"
+                [(ngModel)]="this.redux.getState().productToUpdate.categoryID">
+                <option disabled selected>Actual category :
+                    {{this.redux.getState().productToUpdate.categoryID.categoryName}}</option>
+                <option [ngValue]="c" *ngFor="let c of categories">{{c.categoryName}}</option>
+
+            </select>
+            <div class="alert alert-danger" *ngIf="updateCategory.touched && !updateCategory.valid">
+                <div *ngIf="updateCategory.errors.required">
+                    Category is required </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Picture:</label>
+            <input type="file" accept="image/*" name="productImage" class="form-control"
+                (change)="updateImage($event)" />
+
+        </div>
+
+        <button [disabled]="updateForm.form.invalid || !this.redux.getState().closedModal"
+            class="btn btn-primary update" (click)="updateProduct()">Update Product in the data Base</button>
+    </form>
+</div>

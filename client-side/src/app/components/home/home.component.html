@@ -1,0 +1,68 @@
+<!-- Main Div -->
+<div id="globalDiv">
+
+    <!-- Promotions Image  -->
+    <div id="homepageImage">
+    </div>
+
+    <!-- Login and register redirect -->
+    <div id="loginDiv">
+        <p id="welcomeMessage">Welcome {{welcomeMessage}}</p>
+        <button class="btn btn-dark" (click)="startShopping()"
+            [disabled]="!connectedCustomer">{{shoppingMessage}}</button>
+
+        <form #orderForm="ngForm">
+
+            <div class="form-group">
+                <input required type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="email">
+                <br>
+                <input required type="password" class="form-control" placeholder="password" name="password"
+                    [(ngModel)]="password">
+                <br>
+                <div *ngIf="!connectedCustomer && loginError" class="alert alert-danger">
+                    {{loginError}}
+                </div>
+                <div *ngIf="connectedCustomer && loginSuccess" class="alert alert-success">
+                    {{loginSuccess}}
+                </div>
+                <button [disabled]="orderForm.form.invalid" *ngIf="!connectedCustomer" type="button"
+                    class="btn btn-danger" (click)="login()">Login</button>
+                <button *ngIf="connectedCustomer" type="button" class="btn btn-primary" (click)="logout()">Log
+                    Out</button>
+                <p>Don't you have an account?</p>
+                <a routerLink="/register">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Information about the shop -->
+    <div id="aboutUsDiv">
+        <img id="supermarketImage" src="assets/images/supermarche.png">
+        <br>
+        <div>
+            <p> Opened in 2019, this store is an initiative to sell only quality food.
+                We are choosing only the best for you.
+                Our Store is a organic local new store.<br><br>
+                5% of our products are given to homeless people.<br><br>
+                Order by 2pm and we ship at 4pm. 95% of orders are received Next Day.<br><br>
+                Ask for a refund if you are not satisfied with your products.
+            </p>
+
+        </div>
+    </div>
+
+    <!-- General information about products and customer info -->
+    <div id="generalInformationDiv">
+        <br>
+        <img id="vegetablesImage" src="assets/images/products.jpg">
+        <br><br><br>
+        <p id="availableProducts" *ngIf="products ">
+            There are {{products.length}} available products on this website
+        </p>
+        <p id="numberOfOrders" *ngIf="orders "> There was already {{orders.length}} orders in our store</p>
+        <p id="notificationMessage" *ngIf="isConnected && connectedCustomer">
+            Notification : {{customerNotification}}
+        </p>
+        <p id="contactUs"><b>Contact</b>: <u>Mail</u>: info@supermarket.be <br><u>Phone</u>: 0523081398</p>
+    </div>
+</div>
