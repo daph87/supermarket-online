@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"supermarket.managers"}],"uuid":"346d1dc77957496d9498ab6661ac0a8d"}
